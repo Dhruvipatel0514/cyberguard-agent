@@ -1,0 +1,14 @@
+{
+  "name": "cyberguard-agent",
+  "version": "1.0.0",
+  "description": "AI-powered cybersecurity agent built on gitagent standard",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "validate": "npx gitagent validate",
+    "info": "npx gitagent info"
+  },
+  "dependencies": {
+    "gitagent": "latest"
+  }
+}

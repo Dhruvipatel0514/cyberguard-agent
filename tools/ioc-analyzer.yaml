@@ -1,0 +1,30 @@
+name: ioc-analyzer
+description: "Analyzes an Indicator of Compromise (IOC) for threat intelligence"
+version: "1.0.0"
+input_schema:
+  type: object
+  properties:
+    ioc_value:
+      type: string
+      description: "The IOC to analyze (IP, domain, hash, or URL)"
+    ioc_type:
+      type: string
+      enum: [ip, domain, hash, url]
+      description: "Type of IOC"
+  required:
+    - ioc_value
+    - ioc_type
+output_schema:
+  type: object
+  properties:
+    threat_score:
+      type: integer
+      minimum: 0
+      maximum: 100
+    verdict:
+      type: string
+      enum: [CLEAN, SUSPICIOUS, MALICIOUS]
+    mitre_ttps:
+      type: array
+      items:
+        type: string
