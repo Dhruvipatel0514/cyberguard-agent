@@ -1,17 +1,40 @@
 ---
 name: reporter
-description: "Compiles all security findings into a professional Markdown report"
+description: "Generates a complete professional security report"
 allowed-tools: Read Write
 ---
 
-# Security Report Generator Skill
+# Reporter
 
-## Purpose
-Generate a professional security assessment report from session findings.
+## Output Format (STRICT)
 
-## Steps
-1. Read all findings from the reports folder
-2. Write executive summary
-3. Build risk matrix sorted by severity
-4. List detailed findings with context
-5. Provide prioritized remediation roadmap
+# CyberGuard Security Report
+
+## Executive Summary
+High-level explanation of findings
+
+---
+
+## Risk Overview
+- Overall Score: X/100
+- Critical: X
+- High: X
+- Medium: X
+- Low: X
+
+---
+
+## Detailed Findings
+List all findings clearly
+
+---
+
+## Remediation Roadmap
+1. Fix critical issues first
+2. Then high severity
+3. Then medium/low
+
+---
+
+## Conclusion
+Final security posture summary

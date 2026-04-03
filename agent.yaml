@@ -1,16 +1,19 @@
 spec_version: "0.1.0"
 name: cyberguard-agent
-version: 1.0.0
-description: "An AI cybersecurity agent that scans for vulnerabilities, analyzes threat intelligence, audits code for security flaws, and generates professional reports."
+version: 2.0.0
+description: "AI-powered cybersecurity agent for vulnerability scanning, threat intelligence, secure coding, and defensive scripting"
+
 model:
-  preferred: claude-haiku-4-5-20251001
+  preferred: openrouter:anthropic/claude-3.5-sonnet
+
 skills:
   - vuln-scanner
-  - threat-intel
   - code-auditor
+  - threat-intel
   - reporter
+  - defensive-scripting
+
 tags:
   - cybersecurity
-  - vulnerability
-  - threat-intelligence
+  - ai-agent
   - hackathon

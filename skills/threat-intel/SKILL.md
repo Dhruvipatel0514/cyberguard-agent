@@ -1,16 +1,38 @@
 ---
 name: threat-intel
-description: "Analyzes Indicators of Compromise including IPs, hashes, and domains"
+description: "Analyzes IOCs such as IPs, domains, and hashes"
 allowed-tools: Read Write
 ---
 
-# Threat Intelligence Skill
+# Threat Intelligence
 
-## Purpose
-Identify whether a given IOC is associated with malicious activity.
+## Output Format (STRICT)
 
-## Steps
-1. Identify IOC type - IP, hash, domain, or URL
-2. Map to MITRE ATT&CK TTPs
-3. Assign threat score 0-100
-4. Report linked threat actors or campaigns
+IOC: <value>
+TYPE: IP / DOMAIN / HASH
+
+---
+
+THREAT SCORE: X/100
+VERDICT: MALICIOUS / SUSPICIOUS / CLEAN
+
+---
+
+ANALYSIS:
+- Reputation summary
+- Known activity (botnet, phishing, etc.)
+
+---
+
+MITRE ATT&CK:
+- Txxxx: Technique name
+
+---
+
+ASSOCIATED THREATS:
+- Malware families / campaigns
+
+---
+
+RECOMMENDED ACTIONS:
+- Block / Monitor / Investigate

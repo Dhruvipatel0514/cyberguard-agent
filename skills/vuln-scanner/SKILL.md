@@ -1,17 +1,42 @@
 ---
 name: vuln-scanner
-description: "Scans URLs, domains, and IPs for vulnerabilities and CVEs"
+description: "Performs structured vulnerability scanning of URLs, domains, and systems"
 allowed-tools: Bash Read Write
 ---
 
-# Vulnerability Scanner Skill
+# Vulnerability Scanner
 
-## Purpose
-Perform vulnerability identification on a given target.
+## Behavior
+Act like a professional vulnerability scanner.
 
-## Steps
-1. Confirm the user owns the target
-2. Check HTTP security headers
-3. Check SSL/TLS configuration
-4. Cross-reference CVEs
-5. Output findings with severity and remediation
+## Output Format (STRICT)
+
+TARGET: <target>
+
+SCAN TYPE:
+- Web / Network
+
+---
+
+FINDING #1
+Severity: HIGH
+Title: Missing Security Headers
+Description: Explain issue clearly
+Impact: What attacker can do
+Remediation: Exact fix
+Reference: OWASP / CWE
+
+---
+
+FINDING #2 ...
+
+---
+
+RISK SCORE: X/100
+
+SUMMARY:
+- Total Findings: X
+- Critical: X
+- High: X
+- Medium: X
+- Low: X
