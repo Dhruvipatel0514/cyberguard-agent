@@ -1,51 +1,83 @@
-# CyberGuard Agent
+# 🛡️ CyberGuard — AI-Powered Cybersecurity Agent
 
-> An AI-powered cybersecurity agent built on the gitagent standard
+> Built for the GitAgent Hackathon | gitagent standard v0.1.0
 
-## What It Does
-CyberGuard is a multi-skill security AI agent that can:
-- **Scan** URLs, IPs, and domains for known vulnerabilities
-- **Analyze** threat intelligence and Indicators of Compromise (IOCs)
-- **Audit** source code for OWASP Top 10 vulnerabilities
-- **Generate** professional security reports in Markdown
+CyberGuard is an advanced AI cybersecurity agent for vulnerability scanning, threat intelligence, code auditing, and defensive scripting.
 
-## Built With
-- [gitagent](https://github.com/open-gitagent) standard
-- [gitclaw](https://github.com/open-gitagent/gitclaw) runtime
-- [clawless](https://github.com/open-gitagent/clawless) for phone/browser deployment
-- Claude AI (claude-haiku-4-5) backbone
+---
 
-## Run Locally
-```bash
+## 🚀 Quick Start
+
+### Prerequisites
+- Node.js v18+
+- npm
+- An Anthropic or OpenRouter API key
+
+### 1. Clone the repo
+git clone https://github.com/Dhruvipatel0514/cyberguard-agent.git
+cd cyberguard-agent
+
+### 2. Install dependencies
 npm install
-npm start
-```
 
-## Run in Browser / Phone
-```bash
-npm install clawless
-npx clawless serve
-```
-Then open the URL on any device including your phone.
+### 3. Set up your API key
+Create a .env file in the backend/ folder:
+ANTHROPIC_API_KEY=your_api_key_here
 
-## Validate Agent
-```bash
+### 4. Start the agent
+node backend/index.js
+
+### 5. Open the UI
+Open index.html in your browser or go to http://localhost:3000
+
+---
+
+## 🧠 Skills
+
+| Skill | What it does |
+|---|---|
+| vuln-scanner | Scan a website URL for vulnerabilities |
+| threat-intel | Analyze a suspicious IP address |
+| code-auditor | Audit code for OWASP security issues |
+| reporter | Generate a full security report |
+| defensive-scripting | Generate defensive security scripts |
+
+---
+
+## 🤖 Run via gitclaw (gitagent standard)
+
+npm install -g gitclaw
+gitclaw run .
+
+---
+
+## ✅ Validate the agent
+
 npx gitagent validate
 npx gitagent info
-```
 
-## Skills
-| Skill | Description |
-|-------|-------------|
-| vuln-scanner | HTTP header checks, SSL/TLS, CVE matching |
-| threat-intel | IOC analysis, MITRE ATT&CK mapping |
-| code-auditor | OWASP Top 10 static analysis |
-| reporter | Professional report generation |
+---
 
-## Architecture
-This agent follows the gitagent specification:
-- `agent.yaml` — manifest and model config
-- `SOUL.md` — agent identity and values
-- `RULES.md` — ethical constraints
-- `skills/` — capability modules
-- `tools/` — YAML tool schemas
+## 📁 Project Structure
+
+cyberguard-agent/
+├── agent.yaml          # Agent manifest
+├── SOUL.md             # Agent personality and identity
+├── RULES.md            # Agent rules and boundaries
+├── skills/
+│   ├── vuln-scanner/
+│   ├── threat-intel/
+│   ├── code-auditor/
+│   ├── reporter/
+│   └── defensive-scripting/
+├── tools/
+│   ├── http-headers.yaml
+│   └── ioc-analyzer.yaml
+└── backend/
+    └── index.js
+
+---
+
+## 🏆 Hackathon
+
+Built for the GitAgent Hackathon by Dhruvipatel0514
