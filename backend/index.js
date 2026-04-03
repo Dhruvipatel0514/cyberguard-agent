@@ -73,21 +73,21 @@ app.post("/api/chat", async (req, res) => {
 
   try {
     console.log("Calling OpenRouter...");
-    console.log("Key preview:", "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"?.substring(0, 20));
+    console.log("Key preview:", "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"?.substring(0, 20));
     console.log("Last user message:", lastUserMessage);
     console.log("Detected skill:", detectedSkill);
 
     const apiResponse = await fetch("https://openrouter.ai/api/v1/chat/completions", {
       method: "POST",
       headers: {
-        "Authorization": `Bearer ${"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"}`,
+        "Authorization": `Bearer ${"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"}`,
         "Content-Type": "application/json",
         "HTTP-Referer": "http://localhost:3000",
         "X-Title": "CyberGuard Agent"
       },
       body: JSON.stringify({
         model: "anthropic/claude-haiku-4.5",
-        max_tokens: 1500,
+        max_tokens: 1400,
         messages: [
           { role: "system", content: systemPrompt },
           ...userMessages
