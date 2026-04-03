@@ -7,7 +7,7 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 
-dotenv.config();
+
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -73,21 +73,22 @@ app.post("/api/chat", async (req, res) => {
 
   try {
     console.log("Calling OpenRouter...");
-    console.log("Key preview:", "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"?.substring(0, 20));
+    console.log("Key preview:", ""?.substring(0, 20));
     console.log("Last user message:", lastUserMessage);
     console.log("Detected skill:", detectedSkill);
 
     const apiResponse = await fetch("https://openrouter.ai/api/v1/chat/completions", {
       method: "POST",
       headers: {
-        "Authorization": `Bearer ${"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"}`,
+        "Authorization": "Bearer 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",
+
         "Content-Type": "application/json",
         "HTTP-Referer": "http://localhost:3000",
         "X-Title": "CyberGuard Agent"
       },
       body: JSON.stringify({
-        model: "anthropic/claude-haiku-4.5",
-        max_tokens: 1400,
+        model: "deepseek/deepseek-r1:free",
+        max_tokens: 1000,
         messages: [
           { role: "system", content: systemPrompt },
           ...userMessages
