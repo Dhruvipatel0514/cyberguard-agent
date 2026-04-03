@@ -76,8 +76,3 @@ cyberguard-agent/
 └── backend/
     └── index.js
 
----
-
-## 🏆 Hackathon
-
-Built for the GitAgent Hackathon by Dhruvipatel0514
