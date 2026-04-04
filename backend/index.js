@@ -9,6 +9,9 @@ import { fileURLToPath } from "url";
 
 
 
+dotenv.config({ path: "./.env" });
+console.log("KEY CHECK:", process.env.GEMINI_API_KEY); // add this line
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -73,38 +76,32 @@ app.post("/api/chat", async (req, res) => {
 
   try {
     console.log("Calling OpenRouter...");
+    console.log("KEY:", process.env.OPENROUTER_API_KEY);
     console.log("Key preview:", ""?.substring(0, 20));
     console.log("Last user message:", lastUserMessage);
     console.log("Detected skill:", detectedSkill);
 
-    const apiResponse = await fetch("https://openrouter.ai/api/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        "Authorization": "Bearer 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",
+const response = await fetch("https://api.mistral.ai/v1/chat/completions", {
+  method: "POST",
+  headers: {
+    "Authorization": `Bearer ${process.env.MISTRAL_API_KEY}`,
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    model: "mistral-small-latest",
+    messages: [{ role: "system", content: systemPrompt }, ...userMessages]
+  })
+});
 
-        "Content-Type": "application/json",
-        "HTTP-Referer": "http://localhost:3000",
-        "X-Title": "CyberGuard Agent"
-      },
-      body: JSON.stringify({
-        model: "deepseek/deepseek-r1:free",
-        max_tokens: 1000,
-        messages: [
-          { role: "system", content: systemPrompt },
-          ...userMessages
-        ]
-      })
-    });
+const data = await response.json();
+console.log("Mistral response:", JSON.stringify(data).substring(0, 400));
 
-    const data = await apiResponse.json();
-    console.log("OpenRouter response:", JSON.stringify(data).substring(0, 400));
+if (data.error) {
+  console.error("Mistral error:", data.error);
+  return res.json({ reply: `⚠️ API Error: ${data.error.message}` });
+}
 
-    if (data.error) {
-      console.error("OpenRouter error:", data.error);
-      return res.json({ reply: `⚠️ API Error: ${data.error.message}` });
-    }
-
-    const reply = data?.choices?.[0]?.message?.content || "⚠️ AI did not return a response. Try again.";
+const reply = data?.choices?.[0]?.message?.content || "⚠️ No response.";
 
     const history = loadHistory();
     history.push({ role: "user", content: lastUserMessage });
